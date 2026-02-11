@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IG CRM Side Panel</title>
+  <link rel="stylesheet" href="sidepanel.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <div class="logo-section">
+        <img src="icons/icon48.png" alt="Logo" class="logo">
+        <h1>IG CRM <span class="badge">n8n</span></h1>
+      </div>
+      <div class="header-actions">
+        <button id="refreshBtn" title="Forcer la détection" class="icon-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"></polyline>
+            <polyline points="1 20 1 14 7 14"></polyline>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+          </svg>
+        </button>
+        <button id="settingsBtn" title="Paramètres" class="icon-btn">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+              d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z">
+            </path>
+          </svg>
+        </button>
+      </div>
+    </header>
+
+    <main id="mainView">
+      <section class="prospect-info">
+        <div class="profile-card">
+          <div class="avatar-placeholder">?</div>
+          <div class="name-status">
+            <h2 id="prospectName">Chargement...</h2>
+            <p id="prospectStatus">Détection en cours</p>
+          </div>
+        </div>
+      </section>
+
+      <form id="prospectForm">
+        <div class="form-group">
+          <label for="pName">Nom d'utilisateur (Handle)</label>
+          <input type="text" id="pName" placeholder="Identifiant Instagram" required>
+        </div>
+
+        <div class="form-group">
+          <label for="status">Statut</label>
+          <select id="status">
+            <option value="" selected>Choisir un statut...</option>
+            <option value="Premier contact">Premier contact</option>
+            <option value="En conversation">En conversation</option>
+            <option value="À relancer">À relancer</option>
+            <option value="Appel booké">Appel booké</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="notes">Notes</label>
+          <textarea id="notes" rows="5" placeholder="Informations sur le prospect..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="followUpDate">Date de relance</label>
+          <input type="date" id="followUpDate">
+        </div>
+
+        <button type="submit" id="submitBtn">
+          <span>Envoyer les données</span>
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+        </button>
+      </form>
+
+      <div id="message" class="hidden"></div>
+    </main>
+
+    <section id="settingsView" class="hidden">
+      <div class="view-header">
+        <button id="backBtn" class="icon-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+        </button>
+        <h2>Paramètres</h2>
+      </div>
+
+      <div class="settings-form">
+        <div class="form-group">
+          <label for="webhookUrl">URL du Webhook n8n</label>
+          <input type="text" id="webhookUrl" placeholder="https://votre-n8n.url/webhook/...">
+        </div>
+        <button id="saveSettingsBtn" class="primary-btn">Enregistrer</button>
+
+        <hr class="divider">
+
+        <div class="debug-section">
+          <p class="debug-text">Si la détection échoue, clique ici :</p>
+          <button id="debugBtn" class="secondary-btn">Générer logs de diagnostic</button>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script src="sidepanel.js"></script>
+</body>
+
+</html>
