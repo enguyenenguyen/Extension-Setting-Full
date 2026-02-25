@@ -25,6 +25,17 @@
             <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
           </svg>
         </button>
+        <div class="sync-container">
+          <button id="globalSyncBtn" title="Synchroniser vers Airtable" class="icon-btn sync-btn">
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+              stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+              <polyline points="12 15 12 9"></polyline>
+              <polyline points="9 12 12 9 15 12"></polyline>
+            </svg>
+          </button>
+          <span id="syncBadge" class="badge-notify hidden">0</span>
+        </div>
         <button id="settingsBtn" title="Paramètres" class="icon-btn">
           <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
             stroke-linecap="round" stroke-linejoin="round">
@@ -40,7 +51,7 @@
     <main id="mainView">
       <section class="prospect-info">
         <div class="profile-card">
-          <div class="avatar-placeholder">?</div>
+          <div class="avatar-placeholder"></div>
           <div class="name-status">
             <h2 id="prospectName">Chargement...</h2>
             <p id="prospectStatus">Détection en cours</p>
@@ -62,6 +73,7 @@
             <option value="En conversation">En conversation</option>
             <option value="À relancer">À relancer</option>
             <option value="Appel booké">Appel booké</option>
+            <option value="Pas qualifié">Pas qualifié</option>
           </select>
         </div>
 
@@ -75,17 +87,7 @@
           <input type="date" id="followUpDate">
         </div>
 
-        <button type="submit" id="submitBtn">
-          <span>Envoyer les données</span>
-          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="22" y1="2" x2="11" y2="13"></line>
-            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-          </svg>
-        </button>
-      </form>
-
-      <div id="message" class="hidden"></div>
+        <div id="message" class="hidden"></div>
     </main>
 
     <section id="settingsView" class="hidden">

@@ -6,6 +6,7 @@
   "permissions": [
     "sidePanel",
     "storage",
+    "unlimitedStorage",
     "scripting"
   ],
   "host_permissions": [
@@ -19,8 +20,12 @@
   },
   "content_scripts": [
     {
-      "matches": ["https://www.instagram.com/*"],
-      "js": ["content.js"]
+      "matches": [
+        "https://www.instagram.com/*"
+      ],
+      "js": [
+        "content.js"
+      ]
     }
   ],
   "action": {
